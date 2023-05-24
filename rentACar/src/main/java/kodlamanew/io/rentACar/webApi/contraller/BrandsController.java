@@ -4,10 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kodlamanew.io.rentACar.business.Abstract.BrandService;
+import kodlamanew.io.rentACar.business.requests.CreateBrandRequest;
+import kodlamanew.io.rentACar.business.responses.GetAllBrandsResponse;
 import kodlamanew.io.rentACar.entities.concretes.Brand;
 
 @RestController
@@ -29,9 +32,16 @@ public class BrandsController {
 	
 	@GetMapping("/getAll") // controllerın çalıştıracağı metod 
 	                       // (bu businessa, business dataccesse ordan db ye)
-	public List<Brand> getAll(){
+	public List<GetAllBrandsResponse> getAll(){
 		return brandservice.getAll();
 		
+		
+	}
+	
+	@PostMapping("/add")
+	public void add(CreateBrandRequest createBrandRequest)
+	{
+		this.brandservice.add(createBrandRequest);
 		
 	}
 
