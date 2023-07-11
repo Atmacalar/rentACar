@@ -19,7 +19,6 @@ public interface IBrandRepository extends JpaRepository<Brand,Integer> {
 	
 	
 	
-	//tasarladığım tablonun repositoryisini yazdım, JPA dan extends etttim
-	//böylelikle jpanın lendi metotlarını kullanabiliyorum kendim yazmama gerek yok
+	
 
 }
