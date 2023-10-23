@@ -11,15 +11,16 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+public class CreateModelsRequest {
 
-public class CreateBrandRequest {
+	
 	@NotNull
 	@NotBlank
 	@Size(min=3, max=10)
 	private String name;
 	
+	@NotNull
+	@NotBlank
+	private int brandId;
+	
 }
-
-
-//Kullanıcıdan birşey alıyorsam request, kullanıcıya birşey veriyorsam response
-// mesela kullanıcıya veri eklemesi için id yi vermiyorum sadece name'i veriyorum'

@@ -20,9 +20,11 @@ import kodlamanew.io.rentACar.business.requests.UpdateBrandRequest;
 import kodlamanew.io.rentACar.business.responses.GetAllBrandsResponse;
 import kodlamanew.io.rentACar.business.responses.GetByIdBrandResponse;
 import kodlamanew.io.rentACar.entities.concretes.Brand;
+import lombok.AllArgsConstructor;
 
 @RestController
 @RequestMapping("/api/brands") //kullanıcı conrollere ulaşması için yazması gereken adres
+@AllArgsConstructor
 public class BrandsController {
 	
 	

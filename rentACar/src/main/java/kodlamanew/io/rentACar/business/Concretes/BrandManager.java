@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamanew.io.rentACar.business.Abstract.BrandService;
+import kodlamanew.io.rentACar.business.Rules.BrandBusinessRules;
 import kodlamanew.io.rentACar.business.requests.CreateBrandRequest;
 import kodlamanew.io.rentACar.business.requests.UpdateBrandRequest;
 import kodlamanew.io.rentACar.business.responses.GetAllBrandsResponse;
@@ -25,7 +26,7 @@ public class BrandManager implements BrandService {
 	
 	private IBrandRepository  brandrepository;
 	private ModelMapperService modelMapperService;
-	
+	private BrandBusinessRules brandBusinessRules;
 
 
 	@Override
@@ -55,6 +56,8 @@ public class BrandManager implements BrandService {
 	@Override
 	public void add(CreateBrandRequest createbrandrequest) {
 	
+		this.brandBusinessRules.checkIfBrandNameExist(createbrandrequest.getName());
+		
 		Brand brand= this.modelMapperService.forkrequest().map(createbrandrequest, Brand.class);		
 	
 	this.brandrepository.save(brand);

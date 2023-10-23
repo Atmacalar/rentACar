@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -14,33 +16,27 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Table(name="brands") // bu benim tablom ve adı brands
+@Table(name="model")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Brand {
+public class Models {
 	
-	@Id   // id değerisin
-	@GeneratedValue(strategy = GenerationType.IDENTITY) //id otomatik arttırma
-	@Column(name="id")
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="sid")
 	private int id;
 	
-	@Column(name="name")
+	@Column(name="model_name")
 	private String name;
 	
 	
-	@OneToMany(mappedBy = "brand")
-	private List<Models> models;
+	@ManyToOne
+	@JoinColumn(name="brand_id")
+	private Brand brand;
 	
-	//burada veritabanınındaki tabloları tasarladım
-
+	@OneToMany(mappedBy = "model")
+	private List<Cars> cars;
 }
-
-//Brand(db)-->id,name,quantitiy
-//GetAllBrandsResponse-->id,name  
-//bunları birbiriyle eşleştireceğim kullanıcıya quantity'i göstermek istemiyorum
-	
-	
-
-
