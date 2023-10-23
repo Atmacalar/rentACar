@@ -47,7 +47,7 @@ public class RentACarApplication {
 		
 		for(FieldError fieldError : methodArgumentNotValidException.getBindingResult().getFieldErrors()) {
 			
-			validationproblemDetails.getValidationErrors().put(fieldError.getField(), fieldError.getDefaultMessage())
+			validationproblemDetails.getValidationErrors().put(fieldError.getField(), fieldError.getDefaultMessage());
 		}
 		
 		validationproblemDetails.setValidationErrors(new HashMap<String, String>());
